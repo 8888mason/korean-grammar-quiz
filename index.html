@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="한국어 문법 퀴즈의 답안 후보를 원문 문맥, 사전 의미, 완성문 검토로 연결하는 로컬 작업 도구를 소개합니다.">
+  <meta name="theme-color" content="#193b31">
+  <title>한국어 문법 퀴즈 · 근거로 연결하는 답안 후보</title>
+  <style>
+    :root{--paper:#f7f7ef;--ink:#193b31;--muted:#5d6c63;--line:#d4dbce;--lime:#dcf691;--green:#e8eddf;--orange:#a84c2d;--white:#fffef8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}a{color:inherit;text-decoration:none}button,summary,a{-webkit-tap-highlight-color:transparent}a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:6px}::selection{background:var(--lime);color:var(--ink)}.wrap{width:min(1160px,calc(100% - 64px));margin:auto}.skip{position:fixed;left:16px;top:-100px;z-index:10;background:var(--ink);color:white;padding:10px 20px}.skip:focus{top:12px}.topbar{border-bottom:1px solid var(--line)}.header{min-height:90px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em;font-size:18px}.brandmark{display:grid;place-items:center;width:35px;height:35px;background:var(--ink);color:var(--lime);border-radius:10px 10px 10px 2px;font-size:22px;font-weight:700}.nav{display:flex;gap:29px;align-items:center;font-size:14px;font-weight:600}.nav a:hover{color:var(--orange)}.nav .source{border:1px solid var(--line);border-radius:100px;padding:8px 16px}.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center;padding:90px 0 82px}.eyebrow{font-size:12px;letter-spacing:.14em;font-weight:800;display:flex;align-items:center;gap:9px}.eyebrow:before{content:"";width:7px;height:7px;background:var(--orange);border-radius:50%}h1{font-size:clamp(38px,4.1vw,58px);letter-spacing:-.065em;line-height:1.27;font-weight:750;margin:23px 0 24px}h1 em{font-style:normal;position:relative;display:inline-block}h1 em:after{content:"";height:10px;background:var(--lime);position:absolute;left:0;right:0;bottom:0;z-index:-1}.intro{font-size:17px;color:var(--muted);max-width:470px;margin:0}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:30px 0 24px}.button{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:49px;padding:10px 21px;border-radius:7px;font-size:14px;font-weight:700;background:var(--ink);color:white;transition:background .15s}.button:hover{background:#2b5645}.textlink{font-size:14px;font-weight:650;padding:10px}.small-note{font-size:12px;color:var(--muted);margin:0}.diagram{position:relative;background:var(--green);border-radius:20px;padding:28px 30px 24px;min-width:0}.diagram-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-size:12px;font-weight:700}.dots{display:flex;gap:5px}.dots i{width:5px;height:5px;background:#a7b7a2;border-radius:50%}.sheet{background:var(--white);border:1px solid #cdd7c6;border-radius:10px;padding:21px 24px;box-shadow:0 6px 0 #dce3d3}.sheet-label{color:var(--muted);font-size:11px;letter-spacing:.08em}.sheet strong{font-size:19px;letter-spacing:-.025em;display:block;margin-top:7px}.diagram-down{height:30px;display:grid;place-items:center;color:#81947b;font-size:20px}.meaning{display:grid;grid-template-columns:1fr 1fr;gap:10px}.meaning span{background:#f3f6ed;border:1px solid #cdd7c6;border-radius:8px;padding:14px 7px;text-align:center;font-size:13px;font-weight:600}.diagram-bottom{background:var(--ink);color:var(--white);padding:15px 18px;border-radius:9px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:650}.diagram-bottom .tag{color:var(--lime);font-size:11px;border:1px solid #658467;border-radius:30px;padding:3px 10px;white-space:nowrap}.diagram-caption{font-size:11px;color:var(--muted);margin:18px 0 0;text-align:center}.principles{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding:22px 0;gap:30px;font-size:14px}.principles span{font-size:11px;font-family:ui-monospace,monospace;color:var(--orange);margin-right:10px}.section{padding:84px 0}.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px}.kicker{font-size:12px;letter-spacing:.09em;font-weight:750;color:var(--orange);margin:0 0 10px}h2{font-size:34px;line-height:1.4;letter-spacing:-.05em;margin:0;font-weight:750}.section-heading>p{max-width:340px;color:var(--muted);font-size:14px;margin:0}.steps{border-top:1px solid var(--line)}.step{display:grid;grid-template-columns:60px 245px 1fr;gap:22px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}.step .num{font-family:ui-monospace,monospace;font-size:13px;color:var(--orange)}.step h3{font-size:18px;letter-spacing:-.03em;margin:0}.step p{color:var(--muted);font-size:14px;margin:0}.api-section{background:var(--ink);color:var(--paper);padding:68px 0}.api-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:90px;align-items:start}.api-section .kicker{color:var(--lime)}.api-section h2{font-size:32px}.api-copy{font-size:15px;color:#d0dbd0;margin:20px 0 0}.runtime{border:1px solid #52705c;border-radius:12px;padding:24px}.runtime-label{font-family:ui-monospace,monospace;color:var(--lime);font-size:11px;letter-spacing:.1em;margin:0 0 20px}.runtime-row{display:grid;grid-template-columns:1fr 25px 1fr;gap:8px;align-items:center;text-align:center}.runtime-box{border:1px solid #5c7b65;border-radius:7px;padding:18px 8px;font-size:14px}.runtime-box small{display:block;font-size:11px;color:#b8cbb6;margin-top:4px}.runtime-foot{padding-top:20px;margin:20px 0 0;border-top:1px solid #45644f;color:#d0dbd0;font-size:12px}.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}.status-card{padding:27px;border-right:1px solid var(--line)}.status-card:last-child{border:0;background:#eeeee3}.status-label{font-size:11px;font-weight:750;background:var(--green);padding:5px 9px;display:inline-block;border-radius:4px;margin-bottom:14px}.status-card:last-child .status-label{background:#e3e1d1}.status-card h3{font-size:18px;margin:0 0 10px;letter-spacing:-.025em}.status-card p{font-size:14px;color:var(--muted);margin:0}.status-note{font-size:12px;color:var(--muted);margin:18px 0 0}.faq{display:grid;grid-template-columns:.75fr 1.4fr;gap:85px;padding-top:65px}.faq h2{font-size:26px}.faq details{padding:19px 0;border-bottom:1px solid var(--line)}.faq details:first-child{border-top:1px solid var(--line)}.faq summary{font-size:15px;font-weight:650;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:18px}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";font-family:ui-monospace,monospace;color:var(--orange);font-size:18px;font-weight:400}.faq details[open] summary:after{content:"−"}.faq details p{font-size:14px;color:var(--muted);margin:14px 25px 0 0}.footer{border-top:1px solid var(--line);padding:30px 0 35px}.footer-inner{display:flex;justify-content:space-between;gap:22px;align-items:center;font-size:12px;color:var(--muted)}.footer strong{color:var(--ink);font-size:14px}.footer-links{display:flex;gap:22px}.footer a:hover{text-decoration:underline}
+    @media(min-width:1500px){.hero{padding:108px 0 98px}}
+    @media(max-width:960px){.hero{gap:35px;padding:64px 0}.hero h1{font-size:42px}.step{grid-template-columns:40px 200px 1fr;gap:15px}.api-layout{gap:40px}.faq{gap:40px}.nav{gap:18px}.diagram{padding:24px 20px}.sheet{padding:20px}.status-card{padding:22px}}
+    @media(max-width:700px){html{scroll-padding-top:24px}.wrap{width:calc(100% - 40px)}.header{min-height:78px;align-items:flex-start;justify-content:center;flex-direction:column;gap:12px;padding:17px 0}.brand{font-size:17px}.brandmark{width:30px;height:30px;font-size:20px}.nav{font-size:12px;gap:23px;flex-wrap:wrap}.nav .source{display:none}.hero{grid-template-columns:1fr;padding:48px 0 38px;gap:37px}.hero h1{font-size:clamp(33px,8.8vw,47px);margin:19px 0 20px}.intro{font-size:15px}.eyebrow{font-size:11px}.actions{margin:25px 0 18px}.diagram{padding:23px;max-width:480px;width:100%;margin:auto}.diagram-top{margin-bottom:22px}.principles{grid-template-columns:1fr;gap:11px;padding:21px 0;font-size:13px}.principles span{margin-right:14px}.section{padding:53px 0}.section-heading{display:block;margin-bottom:28px}.section-heading>p{max-width:none;margin-top:15px}.section h2{font-size:27px}.step{grid-template-columns:30px 1fr;gap:5px 12px;padding:23px 0}.step h3{font-size:17px}.step p{grid-column:2;font-size:13px;margin-top:5px}.api-section{padding:46px 0}.api-layout{grid-template-columns:1fr;gap:28px}.api-section h2{font-size:27px}.api-copy{font-size:14px;margin-top:15px}.runtime{padding:20px}.status-grid{grid-template-columns:1fr}.status-card{border-right:0;border-bottom:1px solid var(--line);padding:24px}.status-card p{font-size:13px}.status-label{margin-bottom:10px}.faq{grid-template-columns:1fr;gap:22px;padding-top:46px}.faq h2{font-size:24px}.faq summary{font-size:14px}.faq details p{font-size:13px}.footer-inner{display:block}.footer-links{margin-top:14px;gap:20px;font-size:11px}.footer{padding:26px 0}.footer p{margin:6px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <div class="topbar">
+    <header class="wrap header">
+      <a class="brand" href="#main" aria-label="한국어 문법 퀴즈 처음으로"><span class="brandmark" aria-hidden="true">ㄱ</span>한국어 문법 퀴즈</a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="#workflow">검토 흐름</a><a href="#api">API 활용</a><a href="#status">현재 상태</a>
+        <a class="source" href="https://github.com/8888mason/korean-grammar-quiz">소개 소스 ↗</a>
+      </nav>
+    </header>
+  </div>
+  <main id="main">
+    <div class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">한국어 교육 · 프로젝트 소개</div>
+          <h1 id="hero-title">정답을 넓힐 때도,<br><em>근거는 분명하게.</em></h1>
+          <p class="intro">한국어 문법 퀴즈의 답안 후보를 원문 문맥, 사전 의미, 완성문 검토로 연결하는 로컬 작업 도구입니다.</p>
+          <div class="actions"><a class="button" href="#workflow">검토 흐름 살펴보기 <span aria-hidden="true">↓</span></a><a class="textlink" href="#api">우리말샘 API 활용 ↗</a></div>
+          <p class="small-note">문맥을 먼저 확인하고, 검토를 거친 후보를 연결합니다.</p>
+        </div>
+        <div class="diagram" role="img" aria-label="개념 흐름: 원문과 목표 문법 확인, 사전의 뜻과 관계 검토, 완성문 후보의 명시적 선택, 후속 문장 검토">
+          <div class="diagram-top"><span>답안 후보가 연결되는 과정</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="sheet"><span class="sheet-label">01 / CONTEXT</span><strong>원문 · 그림 · 목표 문법</strong></div>
+          <div class="diagram-down" aria-hidden="true">↓</div>
+          <div class="meaning"><span>문맥에 맞는 뜻</span><span>선택한 어휘 관계</span></div>
+          <div class="diagram-down" aria-hidden="true">↓</div>
+          <div class="sheet"><span class="sheet-label">02 / CANDIDATE</span><strong>근거를 붙인 완성문 후보</strong></div>
+          <div class="diagram-down" aria-hidden="true">↓</div>
+          <div class="diagram-bottom"><span>명시적 선택 → 후속 문장 검토</span><span class="tag">검토 후 반영</span></div>
+          <p class="diagram-caption">처리 흐름을 설명하기 위한 개념도</p>
+        </div>
+      </section>
+      <div class="principles" aria-label="프로젝트의 기본 원칙">
+        <div><span>01</span>원문과 모범답안 보존</div><div><span>02</span>뜻과 문맥을 함께 확인</div><div><span>03</span>후보마다 출처와 선택 이유</div>
+      </div>
+      <section class="section" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading"><div><p class="kicker">HOW IT WORKS</p><h2 id="workflow-title">문맥에서 시작해,<br>완성문으로 확인합니다.</h2></div><p>워크북의 제한형 문법·문맥 완성 문항에서 추가 답안의 적절성을 살피는 과정을 돕습니다.</p></div>
+        <div class="steps">
+          <article class="step"><span class="num">01</span><h3>문항의 조건 읽기</h3><p>원문, 그림, 목표 문법과 모범답안을 함께 확인합니다. 제시된 어휘가 고정된 문항은 그 조건을 유지합니다.</p></article>
+          <article class="step"><span class="num">02</span><h3>필요한 뜻과 관계 조회</h3><p>어휘 선택이 열려 있거나 의미 관계가 쟁점일 때 우리말샘을 참조합니다. 여러 뜻이 있으면 문맥에 맞는 의미를 명시적으로 확인합니다.</p></article>
+          <article class="step"><span class="num">03</span><h3>선택 이유와 후보 연결</h3><p>관계에 연결된 양쪽 뜻을 살피고 완성문 후보를 선택합니다. 조회 원응답과 출처, 해당 문항에서 적용할 수 있는 이유를 함께 남깁니다.</p></article>
+          <article class="step"><span class="num">04</span><h3>완성문 검토 후 반영</h3><p>선택한 후보를 기존 문장 검토 절차로 전달합니다. 목표 문법·문맥·높임·연어 등을 살핀 뒤 승인된 답안을 후속 단계에 반영합니다.</p></article>
+        </div>
+      </section>
+    </div>
+    <section class="api-section" id="api" aria-labelledby="api-title">
+      <div class="wrap api-layout">
+        <div><p class="kicker">DICTIONARY × CONTEXT</p><h2 id="api-title">우리말샘의 의미 정보를<br>문항의 문맥에 연결합니다.</h2><p class="api-copy">우리말샘 검색·내용 조회 API를 활용하도록 구성했습니다. 선택한 어휘 관계와 양쪽 뜻풀이를 확인하고, 문맥에 적용할 후보의 보충 근거로 사용합니다.</p></div>
+        <div class="runtime"><p class="runtime-label">API 호출 위치 · 운영자의 로컬 환경</p><div class="runtime-row"><div class="runtime-box">로컬 Python 도구<small>조회 · 원응답 보존</small></div><span aria-hidden="true">↔</span><div class="runtime-box">우리말샘 API<small>검색 · 내용 조회</small></div></div><p class="runtime-foot">API 키는 로컬 환경변수에서 관리합니다. 이 웹페이지는 프로젝트 개요와 처리 흐름을 제공하는 정적 소개 페이지입니다.</p></div>
+      </div>
+    </section>
+    <div class="wrap">
+      <section class="section" id="status" aria-labelledby="status-title">
+        <div class="section-heading"><div><p class="kicker">PROJECT STATUS</p><h2 id="status-title">현재 구현과 확인 범위</h2></div><p>2026년 11월 3일 기준<br>구현 상태와 실제 서비스 확인 범위를 구분해 안내합니다.</p></div>
+        <div class="status-grid">
+          <article class="status-card"><span class="status-label">구현</span><h3>로컬 조회와 후보 연결</h3><p>검색·내용 조회 어댑터, 명시적으로 선택한 후보의 전달, 원응답 보존과 오프라인 검증 경로를 구현했습니다.</p></article>
+          <article class="status-card"><span class="status-label">격리 입력 확인</span><h3>연결 동작 확인</h3><p>격리된 프로토콜 입력으로 회귀 검증을 수행했습니다. 실제 문항의 언어적 타당성 판정은 별도의 검토를 따릅니다.</p></article>
+          <article class="status-card"><span class="status-label">확인 예정</span><h3>인증 API 실조회</h3><p>인증키를 사용한 실제 API 호출은 아직 검증하지 않았습니다. 웹 어휘지도와 API의 관계 정보가 전체적으로 일치하는지도 추가 확인 대상입니다.</p></article>
+        </div>
+        <p class="status-note">우리말샘 API 이용 등록·승인 여부와 URL 허용 범위는 별도 확인이 필요합니다.</p>
+        <div class="faq">
+          <div><p class="kicker">A LITTLE MORE</p><h2>운영 방식 더 알아보기</h2></div>
+          <div>
+            <details><summary>사전에 연결된 단어는 어떻게 활용하나요?</summary><p>해당 문항에서 대체할 수 있는지 양쪽 뜻, 그림이 요구하는 정보, 조사·연어와 목표 문법을 함께 살핍니다. 선택한 관계는 후보를 검토할 근거로 남기며 후속 문장 검토를 거칩니다.</p></details>
+            <details><summary>조회 결과의 출처는 어떻게 남기나요?</summary><p>받은 원응답을 보존하고 해당 문항과 원문 해시에 연결합니다. 선택한 의미와 어휘 관계, 후보 완성문, 적용 이유를 함께 기록해 후속 단계에서 근거를 확인할 수 있도록 구성했습니다.</p></details>
+            <details><summary>이 사이트에서 무엇을 볼 수 있나요?</summary><p>프로젝트의 목적, 답안 후보를 살피는 흐름, 로컬 API 활용 방식과 현재 확인 범위를 제공합니다. 실제 문항과 학습자 자료는 운영자의 작업 환경에서 관리합니다.</p></details>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><div><strong>한국어 문법 퀴즈</strong><p>문맥을 읽고, 근거를 연결하는 한국어 교육 도구.</p></div><div class="footer-links"><a href="https://github.com/8888mason/korean-grammar-quiz">소개 페이지 소스 ↗</a><a href="https://opendict.korean.go.kr/">국립국어원 우리말샘 ↗</a><a href="#main">맨 위로 ↑</a></div></div></footer>
+</body>
+</html>
